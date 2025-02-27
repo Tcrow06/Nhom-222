@@ -1488,6 +1488,9 @@ line-height: 60px;
 .our-team {
 margin-bottom: 30px;
 box-shadow: 0 10px 40px -10px rgba(0,64,128,.09);
+
+ height: auto; /* Đảm bảo chiều cao tự động theo nội dung */
+  min-height: 250px
 }
 
 .our-team .team_img{
@@ -1517,30 +1520,7 @@ box-shadow: 0 10px 40px -10px rgba(0,64,128,.09);
   height: 100%; */
   object-fit: cover; /* Cắt ảnh phù hợp với khung */
 }
-.our-team .social{
-  padding: 0 0 18px 0;
-  margin: 0;
-  list-style: none;
-  position: absolute;
-  top: -100%;
-  right: 10px;
-  background: #ffaa17;
-  border-radius: 0 0 20px 20px;
-  z-index: 1;
-  transition: all 0.3s ease 0s;
-}
-.our-team:hover .social{
-  top: 0;
-}
-.our-team .social li a{
-  display: block;
-  padding: 15px;
-  font-size: 15px;
-  color: #232434;
-}
-.our-team:hover .social li a:hover{
-  color: #fff;
-}
+
 .our-team .team-content{
   padding: 20px 0;
   background: #fff;
@@ -1598,6 +1578,99 @@ box-shadow: 0 10px 40px -10px rgba(0,64,128,.09);
 @media only screen and (max-width: 990px){
   .our-team{ margin-bottom: 30px; }
 }
+
+.our-team {
+  perspective: 1000px;
+  width: 100%;
+  height: 250px;
+  cursor: pointer;
+}
+.fadeInUp{
+  padding-bottom: 55px;
+}
+
+.team-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.our-team.flipped .team-container {
+  transform: rotateY(180deg);
+}
+
+
+.team-front {
+  position: absolute;
+  width: 100%;
+  min-height: 100%; 
+  height: auto;
+  backface-visibility: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.team-back {
+  position: absolute;
+  width: 100%;
+  min-height: 100%; 
+  height: auto;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-front {
+  background: white;
+  z-index: 2;
+  padding: 20px;
+}
+
+.team-back {
+  transform: rotateY(180deg);
+  background: #ffaa17;
+  color: white;
+  z-index: 1;
+  padding: 20px;
+}
+
+/* .team-back h3 {
+  margin-top: 30px; 
+  font-size: 20px;
+} */
+
+
+
+
+
+/* Đảm bảo mặt trước hiển thị trên */
+.team-front {
+  background: white;
+  z-index: 2;
+}
+
+.team-back h3 { 
+  font-size: 16px; /* Tiêu đề nhỏ hơn */
+}
+
+.team-back p {
+  font-size: 14px; /* Nội dung nhỏ hơn */
+}
+
+
+/* Mặt sau ẩn ban đầu */
+.team-back {
+  transform: rotateY(180deg);
+  background: #ffaa17;
+  color: white;
+  z-index: 1;
+}
+
+
 
 .comment-section {
   max-width: 600px;
